@@ -1,0 +1,345 @@
+/* =====================================================
+   1. RESET BÁSICO E DEFINIÇÕES GLOBAIS
+   Tema: Preto e Branco
+===================================================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    background-color: #FFFFFF;
+    color: #1a1a1a;
+    line-height: 1.6;
+    padding: 20px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* =====================================================
+   2. CABEÇALHO E NAVEGAÇÃO
+===================================================== */
+header {
+    text-align: center;
+    margin-bottom: 50px;
+    padding: 40px 20px;
+    background-color: #fff;
+    border-radius: 15px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+}
+
+header h1 {
+    color: #000;
+    font-size: 3.8rem;
+    margin-bottom: 15px;
+    font-weight: 500;
+    letter-spacing: -0.5px;
+}
+
+header p {
+    color: #666;
+    margin-bottom: 30px;
+    font-size: 1.1rem;
+}
+
+/* Menu de Ícones */
+.menu-icones {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 25px;
+}
+
+.icone-link {
+    text-decoration: none;
+    color: #000;
+    font-size: 2.8rem;
+    padding: 20px;
+    border: 2px solid #E0E0E0;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-width: 120px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    transition: background-color 0.3s ease, color 0.3s ease, transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.icone-link small {
+    display: block;
+    font-size: 0.8rem;
+    margin-top: 10px;
+    font-weight: 600;
+}
+
+.icone-link:hover {
+    background-color: #000;
+    color: #fff;
+    transform: translateY(-5px) scale(1.05);
+    border-color: #000;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* =====================================================
+   3. LAYOUT PRINCIPAL
+===================================================== */
+main {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+#tela-inicial-mensagem {
+    text-align: center;
+    padding: 60px 20px;
+    background-color: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+    color: #aaa;
+    margin: 40px 0;
+    font-size: 1.2rem;
+    border: 1px dashed #ddd;
+}
+
+/* =====================================================
+   4. RECEITAS
+===================================================== */
+article {
+    background-color: #fff;
+    margin-bottom: 40px;
+    padding: 50px;
+    border-radius: 15px;
+    border-left: 8px solid #000;
+    box-shadow: 0 15px 50px rgba(0, 0, 0, 0.1);
+    transition: transform 0.25s ease-out, box-shadow 0.25s ease-out;
+}
+
+article:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+}
+
+/* Mostrar/Esconder conteúdo das receitas */
+.receita-conteudo {
+    display: none;
+    opacity: 0;
+    transition: opacity 0.6s ease-in-out;
+}
+
+.receita-conteudo:target {
+    display: block;
+    opacity: 1;
+}
+
+.receita-conteudo:target ~ #tela-inicial-mensagem {
+    display: none;
+}
+
+/* =====================================================
+   5. TÍTULOS, LISTAS E TEXTO
+===================================================== */
+h2 {
+    text-align: center;
+    font-size: 2.4rem;
+    color: #0c0c0c;
+    margin-bottom: 30px;
+    padding-bottom: 15px;
+    border-bottom: 2px solid rgba(0, 0, 0, 0.1);
+}
+
+h3 {
+    color: #0c0c0c;
+    margin-top: 35px;
+    margin-bottom: 15px;
+    font-size: 1.6rem;
+    border-left: 5px solid #000;
+    padding-left: 15px;
+    font-weight: 600;
+}
+
+ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+li {
+    margin-bottom: 15px;
+    padding-left: 30px;
+    position: relative;
+    color: #333;
+    transition: color 0.2s ease;
+}
+
+li:hover {
+    color: #000;
+}
+
+/* Marcadores customizados */
+li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: #444;
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+/* Destaques */
+mark {
+    background-color: #ddd;
+    padding: 3px 8px;
+    border-radius: 4px;
+    font-weight: bold;
+    color: #000;
+}
+
+/* =====================================================
+   6. BOTÕES FLUTUANTES 
+===================================================== */
+
+/* Seu botão original de voltar */
+.btn-voltar {
+    position: fixed;
+    bottom: 30px;
+    left: 30px;
+    background: #000;
+    color: #f3f2f2; /* Alterado de cf2323 para branco para combinar com o tema */
+    padding: 14px 18px;
+    border-radius: 50%;
+    font-size: 22px;
+    text-decoration: none;
+    display: none; /* Escondido por padrão */
+    box-shadow: 0 4px 12px rgba(233, 13, 13, 0.3);
+    transition: transform 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
+    z-index: 999;
+}
+
+.btn-voltar:hover {
+    background: #ece7e7;
+    transform: scale(1.1);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.4);
+}
+
+/* Exibir botão somente quando uma receita estiver ativa (CORRIGIDO) */
+#receita-bolo:target ~ .btn-voltar,
+#receita-brigadeiro:target ~ .btn-voltar,
+#receita-frango-grelhado:target ~ .btn-voltar,
+#receita-almoco-cavalcante:target ~ .btn-voltar,
+#nossas-origens:target ~ .btn-voltar {
+    display: inline-block;
+    animation: aparecer 0.5s ease forwards;
+}
+
+/* O NOVO BOTÃO FLUTUANTE (ADICIONADO AQUI) */
+.btn-menu-flutuante {
+    position: fixed;
+    bottom: 100px; /* Posicionado acima do outro botão */
+    right: 100px;
+    background-color: #181817;
+    color: #fff;
+    padding: 12px 18px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 16px;
+    box-shadow: 0 4px 8px rgba(14, 13, 13, 0.3);
+    transition: transform 0.3s, background-color 0.3s, opacity 0.3s, visibility 0.3s;
+    z-index: 999;
+    /* ESCONDE O BOTÃO POR PADRÃO USANDO OPACITY/VISIBILITY */
+    opacity: 0;
+    visibility: hidden;
+}
+
+.btn-menu-flutuante:hover {
+    background-color: #1b1b1b;
+    transform: scale(1.1);
+}
+
+/* MOSTRA O NOVO BOTÃO SOMENTE QUANDO QUALQUER SEÇÃO DE RECEITA ESTIVER ATIVA NA URL */
+#receita-bolo:target ~ .btn-menu-flutuante,
+#receita-brigadeiro:target ~ .btn-menu-flutuante,
+#receita-frango-grelhado:target ~ .btn-menu-flutuante,
+#receita-almoco-cavalcante:target ~ .btn-menu-flutuante,
+#nossas-origens:target ~ .btn-menu-flutuante {
+    opacity: 1;
+    visibility: visible;
+}
+
+
+/* Animação de aparição */
+@keyframes aparecer {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+
+
+
+/* =====================================================
+   7. RODAPÉ
+===================================================== */
+footer {
+    text-align: center;
+    margin-top: 60px;
+    padding: 20px;
+    font-size: 0.9rem;
+    color: #888;
+    border-top: 1px solid #eee;
+}
+
+/* =====================================================
+   8. RESPONSIVIDADE
+===================================================== */
+@media (max-width: 864px) {
+    body {
+        padding: 10px;
+    }
+
+    header h1 {
+        font-size: 2.8rem;
+    }
+
+    .menu-icones {
+        flex-wrap: wrap;
+        gap: 15px;
+    }
+
+    .icone-link {
+        flex: 1 1 120px;
+        font-size: 2rem;
+        padding: 15px;
+    }
+
+    article {
+        padding: 25px;
+    }
+
+    /* Ajuste para que os dois botões não se sobreponham em mobile */
+    .btn-voltar,
+    .btn-menu-flutuante {
+        bottom: 15px;
+        right: 15px; /* Ambos no mesmo lugar no mobile */
+        padding: 12px 16px;
+        font-size: 18px;
+    }
+
+    .btn-menu-flutuante {
+         /* Move o segundo botão para a esquerda no mobile */
+        right: 75px; 
+    }
+}
+
+
+
+
+    
+
+    
+
+
+
+
+
